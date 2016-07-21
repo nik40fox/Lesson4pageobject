@@ -1,11 +1,15 @@
 package tests;
 
+import org.hamcrest.core.IsNull;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import pages.HomePage;
 import pages.LoginAndRegistrationPage;
+
+import static java.lang.Thread.sleep;
 
 /**
  * All possible tests for user Registration
@@ -38,9 +42,16 @@ public class LoginAndRegistrationTests {
     }
 
     @Test
-    public void successfulLoginTest () {
-        LoginAndRegistrationPage registrationPage = new LoginAndRegistrationPage();
-        Assert.assertNotNull(registrationPage);
+    public void successfulLoginTest (){
+        LoginAndRegistrationPage loginAndRegistrationPage = new LoginAndRegistrationPage();
+
+        Assert.assertNotNull(loginAndRegistrationPage, "login pagt not loaded");
+
+        HomePage homePage = loginAndRegistrationPage.login("mc_valkir@mail.ru","tiramisu");
+
+        Assert.assertNotNull(homePage,"HomePage not loaded");
+        Assert.assertNotNull(homePage.isAccountSettingsTabDisplayed(), "Account Settings Tab Is Not Displayed");
+
     }
 
 }

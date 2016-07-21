@@ -35,7 +35,7 @@ public class LoginAndRegistrationPage extends BasePage {
     @FindBy(id = "login-password")
     private WebElement loginPasswordField;
 
-    @FindBy(css = ".login-form>input")
+    @FindBy(name = "submit")
     private WebElement signInButton;
 
 

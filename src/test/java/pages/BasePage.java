@@ -4,9 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BasePage {
-    protected WebDriver driver;
+    protected static WebDriver driver = new FirefoxDriver();
 
     public BasePage() {
-        this.driver = new FirefoxDriver();
+        //this.driver = new FirefoxDriver();
     }
 }
