@@ -4,25 +4,45 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 /**
  * Page Object for Registration Page
  */
 public class LoginAndRegistrationPage extends BasePage {
-    private WebElement firstNameField = driver.findElement(By.id("first-name"));
-    private WebElement lastNameField = driver.findElement(By.id("last-name"));
-    private WebElement emailField = driver.findElement(By.id("join-email"));
-    private WebElement passwordField = driver.findElement(By.id("join-password"));
-    private WebElement joinNowButton = driver.findElement(By.className("btn btn-primary join-btn"));
-    private WebElement alertText = driver.findElement(By.cssSelector(".uno-alert.error.hidden>p>strong"));
-    private WebElement loginEmailField = driver.findElement(By.id("login-email"));
-    private WebElement loginPasswordField = driver.findElement(By.id("login-password"));
-    private WebElement signInButton = driver.findElement(By.cssSelector(".login-form>input"));
+    @FindBy(id = "first-name")
+    private WebElement firstNameField;
+
+    @FindBy(id = "last-name")
+    private WebElement lastNameField;
+
+    @FindBy(id = "join-email")
+    private WebElement emailField;
+
+    @FindBy(id = "join-password")
+    private WebElement passwordField;
+
+    @FindBy(className = "btn btn-primary join-btn")
+    private WebElement joinNowButton;
+
+    @FindBy(css = ".uno-alert.error.hidden>p>strong")
+    private WebElement alertText;
+
+    @FindBy(id = "login-email")
+    private WebElement loginEmailField;
+
+    @FindBy(id = "login-password")
+    private WebElement loginPasswordField;
+
+    @FindBy(css = ".login-form>input")
+    private WebElement signInButton;
+
 
     public LoginAndRegistrationPage() {
         driver.get("https://www.linkedin.com/");
-        PageFactory.initElements(driver, LoginAndRegistrationPage.class);
+        PageFactory.initElements(driver, this);
+        
     }
 
     /**
